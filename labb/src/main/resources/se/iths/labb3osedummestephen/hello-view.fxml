@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<?import com.sun.javafx.charts.Legend?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0"
+            style="-fx-background-color:SkyBlue;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="se.iths.labb3osedummestephen.HelloController">
+    <top>
+        <HBox prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#connectServer" text="ConnectServer" />
+                                <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save as" />
+                                <MenuItem mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#undo" text="Undo" />
+                                <MenuItem mnemonicParsing="false" onAction="#redo" text="Redo" />
+                            </items>
+                        </Menu>
+                    </menus>
+                    <effect>
+                        <Glow/>
+                    </effect>
+                </MenuBar>
+                <Label fx:id="serverConnected" prefHeight="24.0" prefWidth="171.0" text=" ServerConnected." textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="30.0" top="2.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+
+            <effect>
+                <Glow />
+            </effect>
+        </HBox>
+    </top>
+    <bottom>
+        <SplitPane dividerPositions="0.5, 0.5, 0.5, 0.5, 0.5" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color:LightGray;" BorderPane.alignment="CENTER">
+            <items>
+                <ColorPicker fx:id="colorPicker">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <value>
+                        <Color />
+                    </value>
+                </ColorPicker>
+                <Spinner fx:id="sizeSpinner" editable="true" initialValue="30" max="500" min="10">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </Spinner>
+                <ToggleButton fx:id="circleButton" mnemonicParsing="false" text="CircleShape">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ToggleButton>
+                <ToggleButton fx:id="rectangleButton" mnemonicParsing="false" text="RectangleShape">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ToggleButton>
+                <ToggleButton fx:id="selectButton" mnemonicParsing="false" text="ShapeOptions">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </ToggleButton>
+
+                <Button fx:id="sendShape" mnemonicParsing="false" onAction="#sendShape" text="BckToTheLastShape">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </Button>
+            </items>
+        </SplitPane>
+    </bottom>
+    <center>
+        <Canvas fx:id="canvas" height="712.0" onMouseClicked="#canvasClicked" width="993.0" />
+    </center>
+    <left>
+        <VBox alignment="CENTER" prefHeight="338.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="chatLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="160.0" text="ChatBox">
+                    <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                    </font>
+                </Label>
+                <ListView fx:id="chatWindow" editable="true" prefHeight="170.0" prefWidth="127.0" VBox.vgrow="ALWAYS" />
+                <HBox>
+                    <children>
+                        <TextField fx:id="chatBoxInput" onAction="#onEnter" prefHeight="49.0" prefWidth="226.0" promptText="Write......" />
+                        <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMessage" prefHeight="50.0" prefWidth="44.0" text="Send">
+                            <effect>
+                                <InnerShadow />
+                            </effect>
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+</BorderPane>
